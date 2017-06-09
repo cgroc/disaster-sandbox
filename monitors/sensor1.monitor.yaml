@@ -1,0 +1,5 @@
+sensorName: sensor1
+monitorRepeatReadings: true
+repeatReadings: 3
+monitorMissedReadings: true
+missedReadingsTimeout: 5

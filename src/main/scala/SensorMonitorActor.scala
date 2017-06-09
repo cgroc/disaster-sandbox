@@ -24,7 +24,7 @@ class SensorMonitorActor(sensorMonitorConfig: SensorMonitorConfig) extends Actor
 
     case MissedReadingsCheck => {
       if((System.currentTimeMillis - lastSeenTime) > (sensorMonitorConfig.missedReadingsTimeout * 1000)) {
-        log.info("Missing reading!")
+        log.info("Missing reading for !")
       }
       else {
         log.info("Checked for missing readings, all fine")

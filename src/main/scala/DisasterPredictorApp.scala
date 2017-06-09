@@ -13,8 +13,18 @@ object DisasterPredictorApp {
                             "sensor4" -> ModelThresholds(20, 25))
 
 
-    val monitorConfigs = Map( "sensor3" -> SensorMonitorConfig(repeatReadings = 3, missedReadingsTimeout = 5),
-                              "sensor1" -> SensorMonitorConfig(repeatReadings = 3, missedReadingsTimeout = 10))
+//    val monitorConfigs = Map( "sensor3" -> SensorMonitorConfig( sensorName = "sensor3",
+//                                                                monitorRepeatReadings = true,
+//                                                                repeatReadings = 3,
+//                                                                monitorMissedReadings = true,
+//                                                                missedReadingsTimeout = 5),
+//                              "sensor1" -> SensorMonitorConfig( sensorName = "sensor1",
+//                                                                monitorRepeatReadings = true,
+//                                                                repeatReadings = 3,
+//                                                                monitorMissedReadings = true,
+//                                                                missedReadingsTimeout = 10))
+
+    val monitorConfigs = MonitorUtils.loadMonitorConfigs()
 
         val monitorActors = monitorConfigs.map(n => (n._1, system.actorOf(SensorMonitorActor.props(n._2))))
 
